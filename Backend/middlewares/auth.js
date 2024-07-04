@@ -1,6 +1,7 @@
 import { catchAsyncError } from "./catchAsyncError.js"
 import ErrorHandler from './error.js';
 import {User} from "../models/userSchema.js";
+import jwt from 'jsonwebtoken'
 
 
 
