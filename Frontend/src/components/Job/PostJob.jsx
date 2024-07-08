@@ -32,7 +32,7 @@ const PostJob = () => {
     await axios
       .post(
         "http://localhost:4000/api/v1/job/post",
-        fixedSalary.length >= 4
+        fixedSalary.length >= 5
           ? {
               title,
               description,
@@ -145,7 +145,7 @@ const PostJob = () => {
               </select>
               <div>
                 {salaryType === "default" ? (
-                  <p>Please provide Salary Type *</p>
+                  <p>Please Provide Salary Type *</p>
                 ) : salaryType === "Fixed Salary" ? (
                   <input
                     type="number"
