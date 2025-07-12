@@ -16,8 +16,6 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-
-# nyc test coverage
 .nyc_output
 
 # Grunt intermediate storage
@@ -65,3 +63,6 @@ temp/
 
 # VS Code settings
 .vscode/
+
+# Ignore package lock file
+package-lock.json
