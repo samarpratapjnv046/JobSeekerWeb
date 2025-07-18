@@ -53,15 +53,30 @@ const user = await User.findOne({email}).select("+password");
 });
 
 
-export const logout = catchAsyncError(async(req,res,next)=>{
-    res.status(201).cookie("token","",{
-        httpOnly:true,
-        expires:new Date(Date.now()),
-    }).json({
-        success:true,
-        message:"User Logged Out successfully !"
+// export const logout = catchAsyncError(async(req,res,next)=>{
+//     res.status(201).cookie("token","",{
+//         httpOnly:true,
+//         expires:new Date(Date.now()),
+//     }).json({
+//         success:true,
+//         message:"User Logged Out successfully !"
+//     });
+// });
+
+export const logout = catchAsyncError(async (req, res, next) => {
+    res.cookie("token", null, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // ✅ Required for HTTPS in production
+        sameSite: "None", // ✅ Required for cross-origin
+        expires: new Date(Date.now()) // 🔥 Expire immediately
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "User Logged Out successfully!"
     });
 });
+
 
 export const getUser =catchAsyncError((req,res,next)=>{
     const user =req.user;
