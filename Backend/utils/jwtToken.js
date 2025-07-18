@@ -1,16 +1,37 @@
+// export const sendToken = (user, statusCode, res, message) => {
+//     const token = user.geJWTToken();
+//     const options = {
+//       expires: new Date(
+//         Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+//       ),
+//       httpOnly: true, // Set httpOnly to true
+//     };
+  
+//     res.status(statusCode).cookie("token", token, options).json({
+//       success: true,
+//       user,
+//       message,
+//       token,
+//     });
+//   };
+
 export const sendToken = (user, statusCode, res, message) => {
     const token = user.geJWTToken();
     const options = {
-      expires: new Date(
-        Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
-      ),
-      httpOnly: true, // Set httpOnly to true
+        expires: new Date(
+            Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+        ),
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production', // ✅ secure in production
+        sameSite: 'None' // ✅ REQUIRED for cross-origin cookies
     };
-  
-    res.status(statusCode).cookie("token", token, options).json({
-      success: true,
-      user,
-      message,
-      token,
-    });
-  };
+
+    res.status(statusCode)
+        .cookie("token", token, options)
+        .json({
+            success: true,
+            user,
+            message,
+            token,
+        });
+};
