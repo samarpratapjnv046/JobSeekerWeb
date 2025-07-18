@@ -22,7 +22,7 @@ const Resister = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://jobseekerweb-pluv.onrender.com//api/v1/user/resister",
+        "https://jobseekerweb-pluv.onrender.com/api/v1/user/resister",
         { name, phone, email, role, password },
         {
           headers: {

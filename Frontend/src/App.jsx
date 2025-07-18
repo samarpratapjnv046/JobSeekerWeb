@@ -23,7 +23,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "https://jobseekerweb-pluv.onrender.com//api/v1/user/getuser",
+          "https://jobseekerweb-pluv.onrender.com/api/v1/user/getuser",
           {
             withCredentials: true,
           }

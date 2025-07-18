@@ -31,7 +31,7 @@ const PostJob = () => {
     }
     await axios
       .post(
-        "https://jobseekerweb-pluv.onrender.com//api/v1/job/post",
+        "https://jobseekerweb-pluv.onrender.com/api/v1/job/post",
         fixedSalary.length >= 5
           ? {
               title,
